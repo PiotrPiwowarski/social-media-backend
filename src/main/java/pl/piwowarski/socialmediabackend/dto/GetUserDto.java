@@ -1,25 +1,16 @@
-package pl.piwowarski.socialmediabackend.entity;
+package pl.piwowarski.socialmediabackend.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-import static jakarta.persistence.GenerationType.IDENTITY;
-
-@Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
-public class User {
+public class GetUserDto {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;

@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -15,14 +13,12 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
-public class User {
+@Table(name = "followed_users")
+public class FollowedUser {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    private long userId;
+    private long followedUserId;
 }

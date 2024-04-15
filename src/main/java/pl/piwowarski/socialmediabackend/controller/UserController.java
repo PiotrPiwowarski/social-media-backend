@@ -1,14 +1,14 @@
 package pl.piwowarski.socialmediabackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriBuilder;
 import pl.piwowarski.socialmediabackend.dto.AddUserDto;
-import pl.piwowarski.socialmediabackend.service.UserService;
+import pl.piwowarski.socialmediabackend.dto.GetUserDto;
+import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +23,18 @@ public class UserController {
         long userId = userService.addUser(addUserDto);
         URI uri = URI.create(String.valueOf(userId));
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetUserDto> getUser(@PathVariable long id) {
+        GetUserDto user = userService.getUser(id);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<GetUserDto>> getAllUsers() {
+        List<GetUserDto> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
     @DeleteMapping("/{id}")

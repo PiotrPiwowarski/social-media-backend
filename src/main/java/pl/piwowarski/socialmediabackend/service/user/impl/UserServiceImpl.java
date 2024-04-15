@@ -1,14 +1,17 @@
-package pl.piwowarski.socialmediabackend.service.impl;
+package pl.piwowarski.socialmediabackend.service.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.AddUserDto;
+import pl.piwowarski.socialmediabackend.dto.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.User;
+import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchIdException;
 import pl.piwowarski.socialmediabackend.exception.UserAlreadyExistsException;
 import pl.piwowarski.socialmediabackend.mapper.UserMapper;
 import pl.piwowarski.socialmediabackend.repository.UserRepository;
-import pl.piwowarski.socialmediabackend.service.UserService;
+import pl.piwowarski.socialmediabackend.service.user.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +29,21 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.save(UserMapper.map(addUserDto));
         return user.getId();
     }
+
+    @Override
+    public GetUserDto getUser(long id) {
+        Optional<User> user = userRepository.findById(id);
+        return UserMapper.map(user.orElseThrow(() -> new NoUsersWithSuchIdException("Brak użytkowników o podanym id")));
+    }
+
+    @Override
+    public List<GetUserDto> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(UserMapper::map)
+                .toList();
+    }
+
 
     @Override
     public void deleteUser(long id) {

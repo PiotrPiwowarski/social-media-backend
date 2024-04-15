@@ -2,6 +2,7 @@ package pl.piwowarski.socialmediabackend.mapper;
 
 import lombok.NoArgsConstructor;
 import pl.piwowarski.socialmediabackend.dto.AddUserDto;
+import pl.piwowarski.socialmediabackend.dto.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.User;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -15,6 +16,16 @@ public class UserMapper {
                 .lastName(addUserDto.getLastName())
                 .email(addUserDto.getEmail())
                 .password(addUserDto.getPassword())
+                .build();
+    }
+
+    public static GetUserDto map(User user) {
+		return GetUserDto.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .password(user.getPassword())
                 .build();
     }
 }
