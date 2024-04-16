@@ -11,3 +11,16 @@ CREATE TABLE IF NOT EXISTS followed_users (
     user_id bigint not null references users(id),
     followed_user_id bigint not null references users(id)
 );
+
+CREATE TABLE IF NOT EXISTS posts (
+    id bigint auto_increment primary key,
+    content varchar(256) not null,
+    user_id bigint not null references users(id)
+);
+
+CREATE TABLE IF NOT EXISTS comments (
+    id bigint auto_increment primary key,
+    content varchar(256) not null,
+    user_id bigint not null references users(id),
+    post_id bigint not null references posts(id)
+);

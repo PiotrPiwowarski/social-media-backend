@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.piwowarski.socialmediabackend.dto.FollowedUserDto;
 import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetUserDto;
 import pl.piwowarski.socialmediabackend.service.followedUser.FollowedUserService;
 
 import java.net.URI;
