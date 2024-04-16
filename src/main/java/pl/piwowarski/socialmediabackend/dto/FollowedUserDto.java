@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FollowedUserDto {
 
-    private Long userId;
-    private Long followedUserId;
+    private long userId;
+    private long followedUserId;
 }
