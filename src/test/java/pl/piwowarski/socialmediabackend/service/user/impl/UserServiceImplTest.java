@@ -1,6 +1,7 @@
 package pl.piwowarski.socialmediabackend.service.user.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.piwowarski.socialmediabackend.dto.AddUserDto;
@@ -72,6 +73,13 @@ public class UserServiceImplTest {
         when(userRepository.findById(1L)).thenReturn(Optional.of(user2));
 
         assertEquals(userService.getUser(1L), getUserDto1);
+    }
+
+    @Test
+    public void getEntityTest() {
+        Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(user2));
+
+        Assertions.assertEquals(user2, userService.getEntity(1L));
     }
 
     @Test

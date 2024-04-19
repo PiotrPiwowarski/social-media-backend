@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getEntity(long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElseThrow(() -> new NoUsersWithSuchIdException("Brak użytkowników o podanym id"));
+    }
+
+    @Override
     public List<GetUserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream()

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class UserAlreadyExistsException extends RuntimeException {
+public class NoPostsWithSuchId extends RuntimeException {
 
     private String message;
 }
