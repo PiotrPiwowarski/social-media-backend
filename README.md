@@ -40,45 +40,45 @@ http://localhost:3000
 ```
 
 ## API Documentation
-### HTTP POST -> /api/users
+#### HTTP POST -> /api/users
 * Adding new user
 * Request Body Object must contain: firstName, lastName, email, password
 
-### HTTP GET -> /api/users
+#### HTTP GET -> /api/users
 * Getting list of users
 
-### HTTP GET -> /api/users/{id}
+#### HTTP GET -> /api/users/{id}
 * Getting user by id
 
-### HTTP DELETE -> /api/users
+#### HTTP DELETE -> /api/users
 * Removing user by id
 
-### HTTP POST -> /api/followedUsers
+#### HTTP POST -> /api/followedUsers
 * Adding user to follow list
 * Request Body Object must contain: userId, followedUserId
 
-### HTTP GET -> /api/followedUsers/{id}
+#### HTTP GET -> /api/followedUsers/{id}
 * Getting list of followed users
 
-### HTTP DELETE -> /api/followedUsers/{id}
+#### HTTP DELETE -> /api/followedUsers/{id}
 * Removing user from followed users list
 
-### HTTP POST -> /api/posts
+#### HTTP POST -> /api/posts
 * Adding new post
 * Request Body Object must contain: content, userId
 
-### HTTP DELETE -> /api/posts/{id}/user/{userId}
+#### HTTP DELETE -> /api/posts/{id}/user/{userId}
 * Removing post by id and userId
 
-### HTTP POST -> /api/comments
+#### HTTP POST -> /api/comments
 * Adding new comment
 * Request Body Object must contain: content, userId, postId
 
-### HTTP DELETE -> /api/comments/{id}/user/{userId}
+#### HTTP DELETE -> /api/comments/{id}/user/{userId}
 * Removing comment by id and userId
 
-### HTTP GET -> /api/postsWithComments
+#### HTTP GET -> /api/postsWithComments
 * Getting list of all posts with their comments
 
-### HTTP GET -> /api/postsWithComments/{userId}/followedUsers
+#### HTTP GET -> /api/postsWithComments/{userId}/followedUsers
 * Getting list of followed users posts with their comments
