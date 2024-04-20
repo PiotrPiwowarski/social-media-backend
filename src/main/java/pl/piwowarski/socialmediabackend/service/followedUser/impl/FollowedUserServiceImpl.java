@@ -6,6 +6,7 @@ import pl.piwowarski.socialmediabackend.dto.FollowedUserDto;
 import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
 import pl.piwowarski.socialmediabackend.dto.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.FollowedUser;
+import pl.piwowarski.socialmediabackend.entity.User;
 import pl.piwowarski.socialmediabackend.mapper.FollowedUserMapper;
 import pl.piwowarski.socialmediabackend.repository.FollowedUserRepository;
 import pl.piwowarski.socialmediabackend.service.followedUser.FollowedUserService;
@@ -32,6 +33,13 @@ public class FollowedUserServiceImpl implements FollowedUserService {
         return followedUsers.stream()
                 .map(this::getFollowedUserDto)
                 .toList();
+    }
+
+    @Override
+    public List<User> getFollowedUsersEntities(long userId) {
+        return followedUserRepository.findByUserId(userId)
+                .stream()
+                .map(followedUser -> userService.getEntity(followedUser.getFollowedUserId())).toList();
     }
 
     private GetFollowedUserDto getFollowedUserDto(FollowedUser followedUser) {

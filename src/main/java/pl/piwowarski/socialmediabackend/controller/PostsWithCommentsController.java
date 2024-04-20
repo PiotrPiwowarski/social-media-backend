@@ -2,10 +2,7 @@ package pl.piwowarski.socialmediabackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.piwowarski.socialmediabackend.dto.GetPostDto;
 import pl.piwowarski.socialmediabackend.service.postsWithComments.PostsWithCommentsService;
 
@@ -22,6 +19,12 @@ public class PostsWithCommentsController {
     @GetMapping
     public ResponseEntity<List<GetPostDto>> getAllPosts() {
         List<GetPostDto> allPostsWithComments = postsWithCommentsService.getAllPostsWithComments();
+        return ResponseEntity.ok(allPostsWithComments);
+    }
+
+    @GetMapping("/{userId}/followedUsers")
+    public ResponseEntity<List<GetPostDto>> getFollowedUsersPosts(@PathVariable long userId) {
+        List<GetPostDto> allPostsWithComments = postsWithCommentsService.getFollowedUsersPostsWithComments(userId);
         return ResponseEntity.ok(allPostsWithComments);
     }
 }
