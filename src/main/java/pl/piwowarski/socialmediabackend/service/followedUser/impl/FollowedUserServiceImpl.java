@@ -6,7 +6,6 @@ import pl.piwowarski.socialmediabackend.dto.FollowedUserDto;
 import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
 import pl.piwowarski.socialmediabackend.dto.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.FollowedUser;
-import pl.piwowarski.socialmediabackend.entity.User;
 import pl.piwowarski.socialmediabackend.mapper.FollowedUserMapper;
 import pl.piwowarski.socialmediabackend.repository.FollowedUserRepository;
 import pl.piwowarski.socialmediabackend.service.followedUser.FollowedUserService;
@@ -23,7 +22,7 @@ public class FollowedUserServiceImpl implements FollowedUserService {
 
     @Override
     public long addUserToFollowers(FollowedUserDto followedUserDto) {
-        FollowedUser followedUser = followedUserRepository.save(FollowedUserMapper.map(followedUserDto));
+        FollowedUser followedUser = followedUserRepository.save(FollowedUserMapper.map(followedUserDto, userService));
         return followedUser.getId();
     }
 
@@ -35,20 +34,13 @@ public class FollowedUserServiceImpl implements FollowedUserService {
                 .toList();
     }
 
-    @Override
-    public List<User> getFollowedUsersEntities(long userId) {
-        return followedUserRepository.findByUserId(userId)
-                .stream()
-                .map(followedUser -> userService.getEntity(followedUser.getFollowedUserId())).toList();
-    }
-
     private GetFollowedUserDto getFollowedUserDto(FollowedUser followedUser) {
-        GetUserDto user = userService.getUser(followedUser.getFollowedUserId());
+        GetUserDto user = userService.getUser(followedUser.getFollowedUser().getId());
         return FollowedUserMapper.map(followedUser.getId(), user);
     }
 
     @Override
-    public void deleteUserFromFollowers(long id) {
-        followedUserRepository.deleteById(id);
+    public void deleteUserFromFollowers(long userId, long followedUserId) {
+        followedUserRepository.deleteByUserIdAndFollowedUserId(userId, followedUserId);
     }
 }

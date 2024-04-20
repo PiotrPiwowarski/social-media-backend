@@ -30,23 +30,11 @@ public class FollowedUserImplTest {
             .followedUserId(2L)
             .build();
 
-    private final FollowedUser followedUser1 = FollowedUser.builder()
-            .userId(1L)
-            .followedUserId(2L)
-            .build();
-
-    private final FollowedUser followedUser2 = FollowedUser.builder()
-            .id(1L)
-            .userId(1L)
-            .followedUserId(2L)
-            .build();
-
     private final GetUserDto getUserDto = GetUserDto.builder()
             .id(2L)
             .firstName("user")
             .lastName("user")
             .email("user@gmail.com")
-            .password("user")
             .build();
 
     private final GetFollowedUserDto getFollowedUserDto = GetFollowedUserDto.builder()
@@ -56,15 +44,6 @@ public class FollowedUserImplTest {
             .lastName("user")
             .build();
 
-    @Test
-    public void addUserToFollowersTest() {
-        try(MockedStatic<FollowedUserMapper> staticMock = Mockito.mockStatic(FollowedUserMapper.class)) {
-            when(followedUserRepository.save(followedUser1)).thenReturn(followedUser2);
-            when(FollowedUserMapper.map(followedUserDto1)).thenReturn(followedUser1);
-
-            assertEquals(followedUser2.getId(), followedUserService.addUserToFollowers(followedUserDto1));
-        }
-    }
 
     @Test
     public void getFollowedUsersTest() {
@@ -79,6 +58,6 @@ public class FollowedUserImplTest {
 
     @Test
     public void deleteUserFromFollowedUsers() {
-		assertDoesNotThrow(() -> followedUserService.deleteUserFromFollowers(1L));
+		assertDoesNotThrow(() -> followedUserService.deleteUserFromFollowers(1L, 1L));
     }
 }

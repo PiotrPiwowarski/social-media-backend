@@ -1,9 +1,6 @@
-# Fast Typing App - Backend
-This app helps user to improve his typing skills. User selects length of the text and try to rewrite it without making mistakes
-and as fast as possible. After rewriting the text, user can check statistics.
+# Social Media App - Backend
 
-## Introduction
-This project contains API of the application
+This project contains API of the social media app. User can add post and comment. User can follow another user and his posts.
 
 ## Technologies
 This Rest API is created using following technologies:

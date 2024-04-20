@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.controller;
+package pl.piwowarski.socialmediabackend.exceptionHandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,5 +18,10 @@ public class ApiExceptionHandler {
     @ExceptionHandler(NoUsersWithSuchIdException.class)
     public ResponseEntity<String> handle(NoUsersWithSuchIdException noUsersWithSuchIdException) {
         return new ResponseEntity<>(noUsersWithSuchIdException.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handle(Exception exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

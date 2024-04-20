@@ -31,9 +31,9 @@ public class FollowedUserController {
         return ResponseEntity.ok(getFollowedUsers);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUserFromFollowers(@PathVariable long id) {
-        followedUserService.deleteUserFromFollowers(id);
+    @DeleteMapping("/{userId}/{followedUserId}")
+    public ResponseEntity<Void> deleteUserFromFollowers(@PathVariable long userId, @PathVariable long followedUserId) {
+        followedUserService.deleteUserFromFollowers(userId, followedUserId);
 		return ResponseEntity.ok().build();
     }
 }

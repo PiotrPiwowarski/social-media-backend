@@ -10,4 +10,5 @@ import java.util.List;
 public interface FollowedUserRepository extends JpaRepository<FollowedUser, Long> {
 
     List<FollowedUser> findByUserId(long userId);
+    void deleteByUserIdAndFollowedUserId(long userId, long followedUserId);
 }

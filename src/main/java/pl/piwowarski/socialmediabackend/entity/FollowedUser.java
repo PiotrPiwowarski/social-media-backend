@@ -19,6 +19,8 @@ public class FollowedUser {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private long userId;
-    private long followedUserId;
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private User user;
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private User followedUser;
 }
