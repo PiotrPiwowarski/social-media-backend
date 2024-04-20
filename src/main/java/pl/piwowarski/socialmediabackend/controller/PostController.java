@@ -23,9 +23,9 @@ public class PostController {
         return ResponseEntity.created(uri).build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePost(@PathVariable long id) {
-        postService.deletePost(id);
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Void> deletePost(@PathVariable long id, @PathVariable long userId) {
+        postService.deletePost(id, userId);
         return ResponseEntity.ok().build();
     }
 }

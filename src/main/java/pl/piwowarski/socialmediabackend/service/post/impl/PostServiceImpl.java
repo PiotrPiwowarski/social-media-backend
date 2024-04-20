@@ -37,12 +37,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getAllUserPosts() {
-        return null;
-    }
-
-    @Override
-    public void deletePost(long id) {
-        postRepository.deleteById(id);
+    public void deletePost(long id, long userId) {
+        postRepository.delete(id, userId);
     }
 }

@@ -11,6 +11,5 @@ public interface PostService {
     long addPost(AddPostDto addPostDto);
     Post getEntity(long id);
     List<Post> getAllPosts();
-    List<Post> getAllUserPosts();
-    void deletePost(long id);
+    void deletePost(long id, long userId);
 }
