@@ -25,8 +25,8 @@ public class Comment {
     private LocalDateTime dateTime;
     private int likes = 0;
     private int dislikes = 0;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Post post;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private User user;
 }

@@ -17,9 +17,15 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public ResponseEntity<Void> addPost(@RequestBody AddCommentDto addCommentDto) {
+    public ResponseEntity<Void> addComment(@RequestBody AddCommentDto addCommentDto) {
         long id = commentService.addComment(addCommentDto);
         URI uri = URI.create(String.valueOf(id));
         return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping("/{id}/user/{userId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable long id, @PathVariable long userId) {
+        commentService.deleteComment(id, userId);
+        return ResponseEntity.ok().build();
     }
 }

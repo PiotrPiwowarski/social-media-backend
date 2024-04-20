@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -27,4 +28,6 @@ public class Post {
     private int dislikes = 0;
     @ManyToOne
     private User user;
+    @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 }

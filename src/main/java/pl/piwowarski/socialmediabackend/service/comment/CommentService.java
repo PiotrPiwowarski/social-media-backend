@@ -9,4 +9,5 @@ public interface CommentService {
 
     long addComment(AddCommentDto addCommentDto);
     List<Comment> getPostComments(long postId);
+    void deleteComment(long id, long userId);
 }

@@ -25,4 +25,8 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<Post> posts;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 }
