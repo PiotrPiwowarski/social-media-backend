@@ -3,7 +3,7 @@ package pl.piwowarski.socialmediabackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.piwowarski.socialmediabackend.dto.GetPostDto;
+import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
 import pl.piwowarski.socialmediabackend.service.postsWithComments.PostsWithCommentsService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class PostsWithCommentsController {
         return ResponseEntity.ok(allPostsWithComments);
     }
 
-    @GetMapping("/{userId}/followedUsers")
+    @GetMapping("/followedUser/{userId}")
     public ResponseEntity<List<GetPostDto>> getFollowedUsersPosts(@PathVariable long userId) {
         List<GetPostDto> allPostsWithComments = postsWithCommentsService.getFollowedUsersPostsWithComments(userId);
         return ResponseEntity.ok(allPostsWithComments);

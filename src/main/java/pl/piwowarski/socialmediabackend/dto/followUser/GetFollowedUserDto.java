@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.dto;
+package pl.piwowarski.socialmediabackend.dto.followUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

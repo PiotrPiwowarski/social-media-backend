@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.dto;
+package pl.piwowarski.socialmediabackend.dto.followUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddCommentDto {
+public class AddFollowedUserDto {
 
-    private String content;
     private long userId;
-    private long postId;
+    private long followedUserId;
 }

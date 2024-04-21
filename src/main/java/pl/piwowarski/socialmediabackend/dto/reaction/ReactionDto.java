@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.dto;
+package pl.piwowarski.socialmediabackend.dto.reaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowedUserDto {
+public class ReactionDto {
 
+    private long structureId;
     private long userId;
-    private long followedUserId;
 }

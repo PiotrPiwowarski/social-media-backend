@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -25,8 +26,10 @@ public class Comment {
     private LocalDateTime dateTime;
     private int likes = 0;
     private int dislikes = 0;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Post post;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     private User user;
+    @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<CommentReaction> reactions;
 }

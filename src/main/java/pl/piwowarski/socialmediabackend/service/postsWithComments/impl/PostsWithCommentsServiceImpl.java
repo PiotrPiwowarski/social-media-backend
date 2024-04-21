@@ -2,9 +2,9 @@ package pl.piwowarski.socialmediabackend.service.postsWithComments.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.piwowarski.socialmediabackend.dto.GetCommentDto;
-import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetPostDto;
+import pl.piwowarski.socialmediabackend.dto.comment.GetCommentDto;
+import pl.piwowarski.socialmediabackend.dto.followUser.GetFollowedUserDto;
+import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
 import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.mapper.CommentMapper;
 import pl.piwowarski.socialmediabackend.mapper.PostMapper;

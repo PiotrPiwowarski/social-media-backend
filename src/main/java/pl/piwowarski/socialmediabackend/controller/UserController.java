@@ -3,8 +3,8 @@ package pl.piwowarski.socialmediabackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.piwowarski.socialmediabackend.dto.AddUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.net.URI;

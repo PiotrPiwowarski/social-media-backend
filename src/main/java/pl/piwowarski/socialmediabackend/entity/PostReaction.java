@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.piwowarski.socialmediabackend.enums.ReactionType;
+
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -13,14 +16,13 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "followed_users")
-public class FollowedUser {
+@Table(name = "post_reactions")
+public class PostReaction {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    @OneToOne
-    private User user;
-    @OneToOne
-    private User followedUser;
+    private ReactionType reactionType;
+    @ManyToOne
+    private Post post;
 }

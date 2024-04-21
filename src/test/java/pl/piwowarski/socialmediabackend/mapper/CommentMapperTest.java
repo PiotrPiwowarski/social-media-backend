@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import pl.piwowarski.socialmediabackend.dto.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
 import pl.piwowarski.socialmediabackend.entity.Comment;
 import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.entity.User;

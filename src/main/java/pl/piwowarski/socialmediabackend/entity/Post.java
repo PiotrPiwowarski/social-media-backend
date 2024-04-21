@@ -30,4 +30,6 @@ public class Post {
     private User user;
     @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "post", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<PostReaction> reactions;
 }

@@ -1,6 +1,6 @@
 package pl.piwowarski.socialmediabackend.service.postsWithComments;
 
-import pl.piwowarski.socialmediabackend.dto.GetPostDto;
+import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
 
 import java.util.List;
 

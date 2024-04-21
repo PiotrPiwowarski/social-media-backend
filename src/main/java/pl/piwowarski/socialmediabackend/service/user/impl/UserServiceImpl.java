@@ -2,8 +2,8 @@ package pl.piwowarski.socialmediabackend.service.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.piwowarski.socialmediabackend.dto.AddUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.User;
 import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchIdException;
 import pl.piwowarski.socialmediabackend.exception.UserAlreadyExistsException;

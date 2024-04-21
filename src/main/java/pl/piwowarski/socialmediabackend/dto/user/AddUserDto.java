@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.dto;
+package pl.piwowarski.socialmediabackend.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetUserDto {
+public class AddUserDto {
 
-    private long id;
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
 }

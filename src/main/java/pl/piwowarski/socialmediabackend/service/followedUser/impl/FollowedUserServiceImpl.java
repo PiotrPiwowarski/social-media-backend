@@ -2,9 +2,9 @@ package pl.piwowarski.socialmediabackend.service.followedUser.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.piwowarski.socialmediabackend.dto.FollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetUserDto;
+import pl.piwowarski.socialmediabackend.dto.followUser.AddFollowedUserDto;
+import pl.piwowarski.socialmediabackend.dto.followUser.GetFollowedUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.FollowedUser;
 import pl.piwowarski.socialmediabackend.mapper.FollowedUserMapper;
 import pl.piwowarski.socialmediabackend.repository.FollowedUserRepository;
@@ -21,8 +21,8 @@ public class FollowedUserServiceImpl implements FollowedUserService {
     private final UserService userService;
 
     @Override
-    public long addUserToFollowers(FollowedUserDto followedUserDto) {
-        FollowedUser followedUser = followedUserRepository.save(FollowedUserMapper.map(followedUserDto, userService));
+    public long addUserToFollowers(AddFollowedUserDto addFollowedUserDto) {
+        FollowedUser followedUser = followedUserRepository.save(FollowedUserMapper.map(addFollowedUserDto, userService));
         return followedUser.getId();
     }
 

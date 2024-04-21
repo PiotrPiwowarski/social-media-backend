@@ -1,4 +1,4 @@
-package pl.piwowarski.socialmediabackend.dto;
+package pl.piwowarski.socialmediabackend.dto.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddPostDto {
+public class AddCommentDto {
 
     private String content;
     private long userId;
+    private long postId;
 }

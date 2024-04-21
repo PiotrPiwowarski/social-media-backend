@@ -1,11 +1,10 @@
 package pl.piwowarski.socialmediabackend.mapper;
 
 import lombok.NoArgsConstructor;
-import pl.piwowarski.socialmediabackend.dto.FollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetFollowedUserDto;
-import pl.piwowarski.socialmediabackend.dto.GetUserDto;
+import pl.piwowarski.socialmediabackend.dto.followUser.AddFollowedUserDto;
+import pl.piwowarski.socialmediabackend.dto.followUser.GetFollowedUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
 import pl.piwowarski.socialmediabackend.entity.FollowedUser;
-import pl.piwowarski.socialmediabackend.service.followedUser.FollowedUserService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -13,10 +12,10 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor(access = PRIVATE)
 public class FollowedUserMapper {
 
-    public static FollowedUser map(FollowedUserDto followedUserDto, UserService userService) {
+    public static FollowedUser map(AddFollowedUserDto addFollowedUserDto, UserService userService) {
         return FollowedUser.builder()
-                .user(userService.getEntity(followedUserDto.getUserId()))
-                .followedUser(userService.getEntity(followedUserDto.getUserId()))
+                .user(userService.getEntity(addFollowedUserDto.getUserId()))
+                .followedUser(userService.getEntity(addFollowedUserDto.getFollowedUserId()))
                 .build();
     }
 

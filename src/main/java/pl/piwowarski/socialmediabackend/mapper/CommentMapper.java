@@ -1,8 +1,8 @@
 package pl.piwowarski.socialmediabackend.mapper;
 
 import lombok.NoArgsConstructor;
-import pl.piwowarski.socialmediabackend.dto.AddCommentDto;
-import pl.piwowarski.socialmediabackend.dto.GetCommentDto;
+import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.comment.GetCommentDto;
 import pl.piwowarski.socialmediabackend.entity.Comment;
 import pl.piwowarski.socialmediabackend.service.post.PostService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;

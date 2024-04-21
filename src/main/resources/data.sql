@@ -11,6 +11,9 @@ INSERT INTO followed_users (user_id, followed_user_id)
 values (1, 2);
 
 INSERT INTO followed_users (user_id, followed_user_id)
+values (1, 3);
+
+INSERT INTO followed_users (user_id, followed_user_id)
 values (2, 3);
 
 INSERT INTO posts (content, date_time, user_id, likes, dislikes)

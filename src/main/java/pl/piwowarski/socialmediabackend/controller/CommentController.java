@@ -3,7 +3,9 @@ package pl.piwowarski.socialmediabackend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.piwowarski.socialmediabackend.dto.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.CommentDislikeDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.CommentLikeDto;
 import pl.piwowarski.socialmediabackend.service.comment.CommentService;
 
 import java.net.URI;

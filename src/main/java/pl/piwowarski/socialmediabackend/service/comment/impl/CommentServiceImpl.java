@@ -2,7 +2,9 @@ package pl.piwowarski.socialmediabackend.service.comment.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.piwowarski.socialmediabackend.dto.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.CommentDislikeDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.CommentLikeDto;
 import pl.piwowarski.socialmediabackend.entity.Comment;
 import pl.piwowarski.socialmediabackend.mapper.CommentMapper;
 import pl.piwowarski.socialmediabackend.repository.CommentRepository;
@@ -34,6 +36,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void deleteComment(long id, long userId) {
-        commentRepository.delete(id, userId);
+        commentRepository.deleteByIdAndUserId(id, userId);
     }
 }
