@@ -23,4 +23,6 @@ public class CommentReaction {
     private ReactionType reactionType;
     @ManyToOne
     private Comment comment;
+    @ManyToOne
+    private User user;
 }

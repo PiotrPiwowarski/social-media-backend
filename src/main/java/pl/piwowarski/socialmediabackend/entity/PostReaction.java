@@ -25,4 +25,6 @@ public class PostReaction {
     private ReactionType reactionType;
     @ManyToOne
     private Post post;
+    @ManyToOne
+    private User user;
 }

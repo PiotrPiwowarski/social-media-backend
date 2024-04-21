@@ -13,7 +13,7 @@ import java.util.List;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class PostMapper {
+public final class PostMapper {
 
     public static Post map(AddPostDto addPostDto, UserService userService) {
         return Post.builder()

@@ -8,7 +8,7 @@ import pl.piwowarski.socialmediabackend.entity.User;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class UserMapper {
+public final class UserMapper {
 
     public static User map(AddUserDto addUserDto) {
         return User.builder()

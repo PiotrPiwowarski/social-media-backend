@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
 import pl.piwowarski.socialmediabackend.entity.Comment;
+import pl.piwowarski.socialmediabackend.exception.NoCommentsWithSuchId;
 import pl.piwowarski.socialmediabackend.mapper.CommentMapper;
 import pl.piwowarski.socialmediabackend.repository.CommentRepository;
 import pl.piwowarski.socialmediabackend.service.comment.CommentService;
@@ -24,6 +25,12 @@ public class CommentServiceImpl implements CommentService {
     public long addComment(AddCommentDto addCommentDto) {
         Comment comment = commentRepository.save(CommentMapper.map(addCommentDto, userService, postService));
         return comment.getId();
+    }
+
+    @Override
+    public Comment getEntity(long structureId) {
+        return commentRepository.findById(structureId)
+                .orElseThrow(() -> new NoCommentsWithSuchId("Brak komentarzy o podanym id"));
     }
 
     @Override

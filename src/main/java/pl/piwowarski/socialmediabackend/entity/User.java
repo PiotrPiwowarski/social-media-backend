@@ -29,4 +29,8 @@ public class User {
     private List<Post> posts;
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<CommentReaction> commentReactions;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<PostReaction> postReactions;
 }

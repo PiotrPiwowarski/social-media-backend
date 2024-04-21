@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.piwowarski.socialmediabackend.enums.ReactionType;
 
 @Data
 @Builder
@@ -13,4 +14,5 @@ public class AddReactionDto {
 
     private long structureId;
     private long userId;
+    private ReactionType reactionType;
 }

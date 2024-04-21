@@ -10,7 +10,7 @@ import pl.piwowarski.socialmediabackend.service.user.UserService;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class FollowedUserMapper {
+public final class FollowedUserMapper {
 
     public static FollowedUser map(AddFollowedUserDto addFollowedUserDto, UserService userService) {
         return FollowedUser.builder()

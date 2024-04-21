@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class CommentMapper {
+public final class CommentMapper {
 
     public static Comment map(AddCommentDto addCommentDto, UserService userService, PostService postService) {
         return Comment.builder()
