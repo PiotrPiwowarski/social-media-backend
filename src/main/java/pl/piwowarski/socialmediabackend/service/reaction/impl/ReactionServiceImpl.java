@@ -2,10 +2,8 @@ package pl.piwowarski.socialmediabackend.service.reaction.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.piwowarski.socialmediabackend.dto.reaction.CommentDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.CommentLikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostLikeDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.AddReactionDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 import pl.piwowarski.socialmediabackend.repository.CommentReactionRepository;
 import pl.piwowarski.socialmediabackend.repository.PostReactionRepository;
 import pl.piwowarski.socialmediabackend.service.reaction.ReactionService;
@@ -18,22 +16,42 @@ public class ReactionServiceImpl implements ReactionService {
     private final PostReactionRepository postReactionRepository;
 
     @Override
-    public void addCommentLike(CommentLikeDto commentLikeDto) {
+    public void addCommentLike(AddReactionDto addReactionDto) {
 
     }
 
     @Override
-    public void addCommentDislike(CommentDislikeDto commentDislikeDto) {
+    public void addCommentDislike(AddReactionDto addReactionDto) {
 
     }
 
     @Override
-    public void addPostLike(PostLikeDto postLikeDto) {
+    public void addPostLike(AddReactionDto addReactionDto) {
 
     }
 
     @Override
-    public void addPostDislike(PostDislikeDto postDislikeDto) {
+    public void addPostDislike(AddReactionDto addReactionDto) {
 
+    }
+
+    @Override
+    public GetReactionDto getCommentLikes(long id) {
+        return null;
+    }
+
+    @Override
+    public GetReactionDto getCommentDislikes(long id) {
+        return null;
+    }
+
+    @Override
+    public GetReactionDto getPostLikes(long id) {
+        return null;
+    }
+
+    @Override
+    public GetReactionDto getPostDislikes(long id) {
+        return null;
     }
 }

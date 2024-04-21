@@ -4,9 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.CommentDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostLikeDto;
 import pl.piwowarski.socialmediabackend.service.post.PostService;
 
 import java.net.URI;

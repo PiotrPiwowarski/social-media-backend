@@ -30,3 +30,15 @@ CREATE TABLE IF NOT EXISTS comments (
     likes bigint not null default 0,
     dislikes bigint not null default 0
 );
+
+CREATE TABLE IF NOT EXISTS comment_reactions (
+    id bigint auto_increment primary key,
+    reaction ENUM('LIKE', 'DISLIKE'),
+    post_id bigint references posts(id) on delete cascade
+);
+
+CREATE TABLE IF NOT EXISTS post_reactions (
+    id bigint auto_increment primary key,
+    reaction ENUM('LIKE', 'DISLIKE'),
+    comment_id bigint references comments(id) on delete cascade
+);

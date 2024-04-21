@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReactionDto {
+public class GetReactionDto {
 
-    private long structureId;
-    private long userId;
+    private int number;
 }

@@ -3,8 +3,6 @@ package pl.piwowarski.socialmediabackend.service.post.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostLikeDto;
 import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.exception.NoPostsWithSuchId;
 import pl.piwowarski.socialmediabackend.mapper.PostMapper;

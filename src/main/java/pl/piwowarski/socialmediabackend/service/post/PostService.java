@@ -1,8 +1,6 @@
 package pl.piwowarski.socialmediabackend.service.post;
 
 import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostLikeDto;
 import pl.piwowarski.socialmediabackend.entity.Post;
 
 import java.util.List;

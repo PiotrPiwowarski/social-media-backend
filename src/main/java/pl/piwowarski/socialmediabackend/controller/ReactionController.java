@@ -2,14 +2,9 @@ package pl.piwowarski.socialmediabackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import pl.piwowarski.socialmediabackend.dto.reaction.CommentDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.CommentLikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostDislikeDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.PostLikeDto;
+import org.springframework.web.bind.annotation.*;
+import pl.piwowarski.socialmediabackend.dto.reaction.AddReactionDto;
+import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 import pl.piwowarski.socialmediabackend.service.reaction.ReactionService;
 
 @RestController
@@ -20,26 +15,50 @@ public class ReactionController {
     private final ReactionService reactionService;
 
     @PostMapping("/like")
-    public ResponseEntity<Void> commentLike(@RequestBody CommentLikeDto commentLikeDto) {
-        reactionService.addCommentLike(commentLikeDto);
+    public ResponseEntity<Void> commentLike(@RequestBody AddReactionDto addReactionDto) {
+        reactionService.addCommentLike(addReactionDto);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/dislike")
-    public ResponseEntity<Void> commentDislike(@RequestBody CommentDislikeDto commentDislikeDto) {
-        reactionService.addCommentDislike(commentDislikeDto);
+    public ResponseEntity<Void> commentDislike(@RequestBody AddReactionDto addReactionDto) {
+        reactionService.addCommentDislike(addReactionDto);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/likes")
+    public ResponseEntity<GetReactionDto> getCommentLikes(@PathVariable long id) {
+        GetReactionDto getReactionDto = reactionService.getCommentLikes(id);
+        return ResponseEntity.ok(getReactionDto);
+    }
+
+    @GetMapping("/{id}/dislikes")
+    public ResponseEntity<GetReactionDto> getCommentDislikes(@PathVariable long id) {
+        GetReactionDto getReactionDto = reactionService.getCommentDislikes(id);
+        return ResponseEntity.ok(getReactionDto);
     }
 
     @PostMapping("/like")
-    public ResponseEntity<Void> postLike(@RequestBody PostLikeDto postLikeDto) {
-        reactionService.addPostLike(postLikeDto);
+    public ResponseEntity<Void> postLike(@RequestBody AddReactionDto addReactionDto) {
+        reactionService.addPostLike(addReactionDto);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/dislike")
-    public ResponseEntity<Void> postDislike(@RequestBody PostDislikeDto postDislikeDto) {
-        reactionService.addPostDislike(postDislikeDto);
+    public ResponseEntity<Void> postDislike(@RequestBody AddReactionDto addReactionDto) {
+        reactionService.addPostDislike(addReactionDto);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/likes")
+    public ResponseEntity<GetReactionDto> getPostLikes(@PathVariable long id) {
+        GetReactionDto getReactionDto = reactionService.getPostLikes(id);
+        return ResponseEntity.ok(getReactionDto);
+    }
+
+    @GetMapping("/{id}/dislikes")
+    public ResponseEntity<GetReactionDto> getPostDislikes(@PathVariable long id) {
+        GetReactionDto getReactionDto= reactionService.getPostDislikes(id);
+        return ResponseEntity.ok(getReactionDto);
     }
 }
