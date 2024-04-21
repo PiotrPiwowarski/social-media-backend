@@ -22,6 +22,7 @@ public class PostReaction {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private ReactionType reactionType;
     @ManyToOne
     private Post post;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.reaction.AddReactionDto;
 import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 import pl.piwowarski.socialmediabackend.entity.CommentReaction;
+import pl.piwowarski.socialmediabackend.enums.ReactionType;
 import pl.piwowarski.socialmediabackend.mapper.CommentReactionMapper;
 import pl.piwowarski.socialmediabackend.repository.CommentReactionRepository;
 import pl.piwowarski.socialmediabackend.service.comment.CommentService;
@@ -22,7 +23,7 @@ public class CommentReactionServiceImpl implements CommentReactionService {
     private final UserService userService;
 
     @Override
-    public void addCommentLike(AddReactionDto addReactionDto) {
+    public void addCommentReaction(AddReactionDto addReactionDto) {
         Optional<CommentReaction> optional = commentReactionRepository
                 .findByUserIdAndCommentId(addReactionDto.getUserId(), addReactionDto.getStructureId());
         if(optional.isEmpty()) {
@@ -33,17 +34,18 @@ public class CommentReactionServiceImpl implements CommentReactionService {
     }
 
     @Override
-    public void addCommentDislike(AddReactionDto addReactionDto) {
-        commentReactionRepository.save(CommentReactionMapper.map(addReactionDto, commentService, userService));
-    }
-
-    @Override
     public GetReactionDto getCommentLikes(long id) {
-        return null;
+        int likes =  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.LIKE);
+        return GetReactionDto.builder()
+                .number(likes)
+                .build();
     }
 
     @Override
     public GetReactionDto getCommentDislikes(long id) {
-        return null;
+        int dislikes =  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.DISLIKE);
+        return GetReactionDto.builder()
+                .number(dislikes)
+                .build();
     }
 }

@@ -20,6 +20,7 @@ public class CommentReaction {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private ReactionType reactionType;
     @ManyToOne
     private Comment comment;

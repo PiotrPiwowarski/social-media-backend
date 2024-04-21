@@ -14,15 +14,9 @@ public class CommentReactionController {
 
     private final CommentReactionService commentReactionService;
 
-    @PostMapping("/like")
-    public ResponseEntity<Void> commentLike(@RequestBody AddReactionDto addReactionDto) {
-        commentReactionService.addCommentLike(addReactionDto);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/dislike")
-    public ResponseEntity<Void> commentDislike(@RequestBody AddReactionDto addReactionDto) {
-        commentReactionService.addCommentDislike(addReactionDto);
+    @PostMapping
+    public ResponseEntity<Void> addCommentReaction(@RequestBody AddReactionDto addReactionDto) {
+        commentReactionService.addCommentReaction(addReactionDto);
         return ResponseEntity.ok().build();
     }
 

@@ -14,27 +14,21 @@ public class PostReactionController {
 
     private final PostReactionService postReactionService;
 
-    @PostMapping("/like")
-    public ResponseEntity<Void> postLike(@RequestBody AddReactionDto addReactionDto) {
-        postReactionService.addPostLike(addReactionDto);
+    @PostMapping
+    public ResponseEntity<Void> addPostReaction(@RequestBody AddReactionDto addReactionDto) {
+        postReactionService.addPostReaction(addReactionDto);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/dislike")
-    public ResponseEntity<Void> postDislike(@RequestBody AddReactionDto addReactionDto) {
-        postReactionService.addPostDislike(addReactionDto);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/{id}/likes")
-    public ResponseEntity<GetReactionDto> getPostLikes(@PathVariable long id) {
-        GetReactionDto getReactionDto = postReactionService.getPostLikes(id);
+    @GetMapping("/{postId}/likes")
+    public ResponseEntity<GetReactionDto> getPostLikes(@PathVariable long postId) {
+        GetReactionDto getReactionDto = postReactionService.getPostLikes(postId);
         return ResponseEntity.ok(getReactionDto);
     }
 
-    @GetMapping("/{id}/dislikes")
-    public ResponseEntity<GetReactionDto> getPostDislikes(@PathVariable long id) {
-        GetReactionDto getReactionDto= postReactionService.getPostDislikes(id);
+    @GetMapping("/{postId}/dislikes")
+    public ResponseEntity<GetReactionDto> getPostDislikes(@PathVariable long postId) {
+        GetReactionDto getReactionDto= postReactionService.getPostDislikes(postId);
         return ResponseEntity.ok(getReactionDto);
     }
 }

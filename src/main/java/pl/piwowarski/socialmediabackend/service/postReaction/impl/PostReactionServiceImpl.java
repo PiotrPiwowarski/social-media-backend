@@ -6,6 +6,7 @@ import pl.piwowarski.socialmediabackend.dto.reaction.AddReactionDto;
 import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 import pl.piwowarski.socialmediabackend.entity.CommentReaction;
 import pl.piwowarski.socialmediabackend.entity.PostReaction;
+import pl.piwowarski.socialmediabackend.enums.ReactionType;
 import pl.piwowarski.socialmediabackend.mapper.CommentReactionMapper;
 import pl.piwowarski.socialmediabackend.mapper.PostReactionMapper;
 import pl.piwowarski.socialmediabackend.repository.PostReactionRepository;
@@ -24,7 +25,7 @@ public class PostReactionServiceImpl implements PostReactionService {
     private final UserService userService;
 
     @Override
-    public void addPostLike(AddReactionDto addReactionDto) {
+    public void addPostReaction(AddReactionDto addReactionDto) {
         Optional<PostReaction> optional = postReactionRepository
                 .findByUserIdAndPostId(addReactionDto.getUserId(), addReactionDto.getStructureId());
         if(optional.isEmpty()) {
@@ -35,17 +36,18 @@ public class PostReactionServiceImpl implements PostReactionService {
     }
 
     @Override
-    public void addPostDislike(AddReactionDto addReactionDto) {
-
-    }
-
-    @Override
     public GetReactionDto getPostLikes(long id) {
-        return null;
+        int likes = postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.LIKE);
+        return GetReactionDto.builder()
+                .number(likes)
+                .build();
     }
 
     @Override
     public GetReactionDto getPostDislikes(long id) {
-        return null;
+        int dislikes = postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.DISLIKE);
+        return GetReactionDto.builder()
+                .number(dislikes)
+                .build();
     }
 }
