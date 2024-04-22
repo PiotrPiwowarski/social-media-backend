@@ -17,13 +17,13 @@ public class PostsWithCommentsController {
     private final PostsWithCommentsService postsWithCommentsService;
 
     @GetMapping
-    public ResponseEntity<List<GetPostDto>> getAllPosts() {
+    public ResponseEntity<List<GetPostDto>> getAllPostsWithComments() {
         List<GetPostDto> allPostsWithComments = postsWithCommentsService.getAllPostsWithComments();
         return ResponseEntity.ok(allPostsWithComments);
     }
 
     @GetMapping("/followedUser/{userId}")
-    public ResponseEntity<List<GetPostDto>> getFollowedUsersPosts(@PathVariable long userId) {
+    public ResponseEntity<List<GetPostDto>> getFollowedUsersPostsWithComments(@PathVariable long userId) {
         List<GetPostDto> allPostsWithComments = postsWithCommentsService.getFollowedUsersPostsWithComments(userId);
         return ResponseEntity.ok(allPostsWithComments);
     }

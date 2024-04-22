@@ -1,12 +1,17 @@
 # Social Media App - Backend
 
-This project contains API of the social media app. User can add post and comment. User can follow another user and his posts.
+This project contains API of the social media app. You can create user, post, comment. Users can follow other users,
+give likes and dislikes to posts and comments.
+
+## What's next
+
+This project is constantly being developed, new features soon!
 
 ## Technologies
 This Rest API is created using following technologies:
 * Java 17
 * Spring Boot
-* Spring data
+* Spring Data
 * H2 database
 * Lombok
 * JUnit
@@ -21,61 +26,36 @@ There are two .sql files in `src/main/resources`:
 * `schema.sql` - it is used to build the database in runtime
 * `data.sql` - it fills the database with data
 
+## Some functionalities
+* Adding new user
+* Getting user by id
+* Getting all users
+* Deleting user
+* Adding user to followers
+* Getting all followed users
+* Deleting user from followers
+* Adding new post
+* Deleting post
+* Adding new comment
+* Deleting comment
+* Adding post reaction
+* Getting post likes
+* Getting post dislikes
+* Adding comment reaction
+* Getting comment likes
+* Getting comment dislikes
+* Getting all posts with comments
+* Getting followed users posts with comments
+
+
 ## Running the application
 ### Using Docker
-1. Go to the main application folder
-2. Use following command in terminal:
-
+1. Download docker image
 ```
-docker compose up
+docker pull piotrpiw/social-media-backend:1.0
 ```
-
-3. Use following URL in your browser:
-
+2. Run docker container with app
 ```
-http://localhost:3000
+docker run -p 8080:8080 piotrpiw/social-media-backend:1.0
 ```
 
-## API Documentation
-#### HTTP POST -> /api/users
-* Adding new user
-* Request Body Object must contain: firstName, lastName, email, password
-
-#### HTTP GET -> /api/users
-* Getting list of users
-
-#### HTTP GET -> /api/users/{id}
-* Getting user by id
-
-#### HTTP DELETE -> /api/users
-* Removing user by id
-
-#### HTTP POST -> /api/followedUsers
-* Adding user to follow list
-* Request Body Object must contain: userId, followedUserId
-
-#### HTTP GET -> /api/followedUsers/{id}
-* Getting list of followed users
-
-#### HTTP DELETE -> /api/followedUsers/{id}
-* Removing user from followed users list
-
-#### HTTP POST -> /api/posts
-* Adding new post
-* Request Body Object must contain: content, userId
-
-#### HTTP DELETE -> /api/posts/{id}/user/{userId}
-* Removing post by id and userId
-
-#### HTTP POST -> /api/comments
-* Adding new comment
-* Request Body Object must contain: content, userId, postId
-
-#### HTTP DELETE -> /api/comments/{id}/user/{userId}
-* Removing comment by id and userId
-
-#### HTTP GET -> /api/postsWithComments
-* Getting list of all posts with their comments
-
-#### HTTP GET -> /api/postsWithComments/{userId}/followedUsers
-* Getting list of followed users posts with their comments
