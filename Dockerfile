@@ -1,4 +1,4 @@
 FROM openjdk:17-jdk
-COPY target/app.jar .
+COPY target/social-media-backend.jar .
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "/social-media-backend.jar"]
