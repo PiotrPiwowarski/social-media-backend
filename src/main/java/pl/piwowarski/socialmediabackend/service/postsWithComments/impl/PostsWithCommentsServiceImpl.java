@@ -31,6 +31,15 @@ public class PostsWithCommentsServiceImpl implements PostsWithCommentsService {
                 .toList();
     }
 
+    private GetPostDto getPostDto(long id) {
+        List<GetCommentDto> getComments = commentService
+                .getPostComments(id)
+                .stream()
+                .map(CommentMapper::map)
+                .toList();
+        return PostMapper.map(postService.getEntity(id), getComments);
+    }
+
     @Override
     public List<GetPostDto> getFollowedUsersPostsWithComments(long userId) {
         List<GetFollowedUserDto> followedUsers = followedUserService.getFollowedUsers(userId);
@@ -48,14 +57,5 @@ public class PostsWithCommentsServiceImpl implements PostsWithCommentsService {
             }
         }
         return false;
-    }
-
-    private GetPostDto getPostDto(long id) {
-        List<GetCommentDto> getComments = commentService
-                .getPostComments(id)
-                .stream()
-                .map(CommentMapper::map)
-                .toList();
-        return PostMapper.map(postService.getEntity(id), getComments);
     }
 }
