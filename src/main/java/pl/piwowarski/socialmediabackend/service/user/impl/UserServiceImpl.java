@@ -1,6 +1,8 @@
 package pl.piwowarski.socialmediabackend.service.user.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public long addUser(AddUserDto addUserDto) {
@@ -26,7 +29,7 @@ public class UserServiceImpl implements UserService {
         if(optionalUser.isPresent()) {
             throw new UserAlreadyExistsException("Użytkownik o podanym id już istnieje");
         }
-        User user = userRepository.save(UserMapper.map(addUserDto));
+        User user = userRepository.save(UserMapper.map(addUserDto, passwordEncoder));
         return user.getId();
     }
 
