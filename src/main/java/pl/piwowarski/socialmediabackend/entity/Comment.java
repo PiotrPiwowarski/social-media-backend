@@ -24,8 +24,6 @@ public class Comment {
     private Long id;
     private String content;
     private LocalDateTime dateTime;
-    private int likes = 0;
-    private int dislikes = 0;
     @ManyToOne
     private Post post;
     @ManyToOne

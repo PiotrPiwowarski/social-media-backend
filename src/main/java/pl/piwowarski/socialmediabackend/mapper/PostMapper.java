@@ -27,8 +27,6 @@ public final class PostMapper {
         return GetPostDto.builder()
                 .id(post.getId())
                 .content(post.getContent())
-                .likes(post.getLikes())
-                .dislikes(post.getDislikes())
                 .dateTime(post.getDateTime())
                 .userFirstName(post.getUser().getFirstName())
                 .userLastName(post.getUser().getLastName())

@@ -18,8 +18,6 @@ public class GetPostDto {
     private Long id;
     private String content;
     private LocalDateTime dateTime;
-    private int likes;
-    private int dislikes;
     private long userId;
     private String userFirstName;
     private String userLastName;

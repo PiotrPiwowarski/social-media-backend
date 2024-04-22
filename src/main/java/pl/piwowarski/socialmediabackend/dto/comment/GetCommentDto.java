@@ -16,8 +16,6 @@ public class GetCommentDto {
     private Long id;
     private String content;
     private LocalDateTime dateTime;
-    private int likes;
-    private int dislikes;
     private long postId;
     private long userId;
     private String userFirstName;

@@ -16,9 +16,7 @@ CREATE TABLE IF NOT EXISTS posts (
     id bigint auto_increment primary key,
     content varchar(256) not null,
     date_time timestamp not null,
-    user_id bigint references users(id) on delete cascade,
-    likes bigint not null default 0,
-    dislikes bigint not null default 0
+    user_id bigint references users(id) on delete cascade
 );
 
 CREATE TABLE IF NOT EXISTS comments (
@@ -26,9 +24,7 @@ CREATE TABLE IF NOT EXISTS comments (
     content varchar(256) not null,
     date_time timestamp not null,
     user_id bigint references users(id) on delete cascade,
-    post_id bigint references posts(id) on delete cascade,
-    likes bigint not null default 0,
-    dislikes bigint not null default 0
+    post_id bigint references posts(id) on delete cascade
 );
 
 CREATE TABLE IF NOT EXISTS comment_reactions (

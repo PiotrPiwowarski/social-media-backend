@@ -26,8 +26,6 @@ public final class CommentMapper {
     public static GetCommentDto map(Comment comment) {
         return GetCommentDto.builder()
                 .id(comment.getId())
-                .likes(comment.getLikes())
-                .dislikes(comment.getDislikes())
                 .content(comment.getContent())
                 .dateTime(comment.getDateTime())
                 .postId(comment.getPost().getId())

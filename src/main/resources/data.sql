@@ -16,32 +16,32 @@ values (1, 3);
 INSERT INTO followed_users (user_id, followed_user_id)
 values (2, 3);
 
-INSERT INTO posts (content, date_time, user_id, likes, dislikes)
-values ('hello post', '2024-01-07 12:24:36', 1, 10, 4);
+INSERT INTO posts (content, date_time, user_id)
+values ('hello post', '2024-01-07 12:24:36', 1);
 
-INSERT INTO posts (content, date_time, user_id, likes, dislikes)
-values ('goodbye post', '2024-01-07 12:24:36', 2, 10, 4);
+INSERT INTO posts (content, date_time, user_id)
+values ('goodbye post', '2024-01-07 12:24:36', 2);
 
-INSERT INTO posts (content, date_time, user_id, likes, dislikes)
-values ('nice post', '2024-01-07 12:24:36', 3, 10, 4);
+INSERT INTO posts (content, date_time, user_id)
+values ('nice post', '2024-01-07 12:24:36', 3);
 
-INSERT INTO posts (content, date_time, user_id, likes, dislikes)
-values ('bad post', '2024-01-07 12:24:36', 3, 10, 4);
+INSERT INTO posts (content, date_time, user_id)
+values ('bad post', '2024-01-07 12:24:36', 3);
 
-INSERT INTO comments (content, date_time, user_id, post_id, likes, dislikes)
-values ('super', '2024-01-07 12:24:36', 1, 1, 10, 4);
+INSERT INTO comments (content, date_time, user_id, post_id)
+values ('super', '2024-01-07 12:24:36', 1, 1);
 
-INSERT INTO comments (content, date_time,user_id, post_id, likes, dislikes)
-values ('great', '2024-01-07 12:24:36', 1, 1, 10, 4);
+INSERT INTO comments (content, date_time,user_id, post_id)
+values ('great', '2024-01-07 12:24:36', 1, 1);
 
-INSERT INTO comments (content, date_time,user_id, post_id, likes, dislikes)
-values ('not bad', '2024-01-07 12:24:36', 2, 2, 10, 4);
+INSERT INTO comments (content, date_time,user_id, post_id)
+values ('not bad', '2024-01-07 12:24:36', 2, 2);
 
-INSERT INTO comments (content, date_time,user_id, post_id, likes, dislikes)
-values ('sorry', '2024-01-07 12:24:36', 3, 3, 10, 4);
+INSERT INTO comments (content, date_time,user_id, post_id)
+values ('sorry', '2024-01-07 12:24:36', 3, 3);
 
-INSERT INTO comments (content, date_time,user_id, post_id, likes, dislikes)
-values ('fine', '2024-01-07 12:24:36', 2, 4, 10, 4);
+INSERT INTO comments (content, date_time,user_id, post_id)
+values ('fine', '2024-01-07 12:24:36', 2, 4);
 
-INSERT INTO comments (content, date_time,user_id, post_id, likes, dislikes)
-values ('can be better', '2024-01-07 12:24:36', 3, 4, 10, 4);
+INSERT INTO comments (content, date_time,user_id, post_id)
+values ('can be better', '2024-01-07 12:24:36', 3, 4);
