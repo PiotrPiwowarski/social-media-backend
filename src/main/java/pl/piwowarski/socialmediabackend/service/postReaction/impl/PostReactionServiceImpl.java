@@ -30,6 +30,8 @@ public class PostReactionServiceImpl implements PostReactionService {
                 .findByUserIdAndPostId(addReactionDto.getUserId(), addReactionDto.getStructureId());
         if(optional.isEmpty()) {
             postReactionRepository.save(PostReactionMapper.map(addReactionDto, postService, userService));
+        } else if(optional.get().getReactionType().equals(addReactionDto.getReactionType())) {
+            postReactionRepository.delete(optional.get());
         } else {
             postReactionRepository.delete(optional.get());
             postReactionRepository.save(PostReactionMapper.map(addReactionDto, postService, userService));
@@ -37,18 +39,12 @@ public class PostReactionServiceImpl implements PostReactionService {
     }
 
     @Override
-    public GetReactionDto getPostLikes(long id) {
-        int likes = postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.LIKE);
-        return GetReactionDto.builder()
-                .number(likes)
-                .build();
+    public int getPostLikes(long id) {
+        return postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.LIKE);
     }
 
     @Override
-    public GetReactionDto getPostDislikes(long id) {
-        int dislikes = postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.DISLIKE);
-        return GetReactionDto.builder()
-                .number(dislikes)
-                .build();
+    public int getPostDislikes(long id) {
+        return postReactionRepository.countAllByPostIdAndReactionType(id, ReactionType.DISLIKE);
     }
 }

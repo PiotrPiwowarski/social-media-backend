@@ -21,5 +21,7 @@ public class GetPostDto {
     private long userId;
     private String userFirstName;
     private String userLastName;
+    private int likes;
+    private int dislikes;
     private List<GetCommentDto> comments;
 }

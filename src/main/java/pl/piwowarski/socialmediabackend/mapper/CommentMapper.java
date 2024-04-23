@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
 import pl.piwowarski.socialmediabackend.dto.comment.GetCommentDto;
 import pl.piwowarski.socialmediabackend.entity.Comment;
+import pl.piwowarski.socialmediabackend.service.commentReaction.CommentReactionService;
 import pl.piwowarski.socialmediabackend.service.post.PostService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
@@ -23,7 +24,7 @@ public final class CommentMapper {
                 .build();
     }
 
-    public static GetCommentDto map(Comment comment) {
+    public static GetCommentDto map(Comment comment, CommentReactionService commentReactionService) {
         return GetCommentDto.builder()
                 .id(comment.getId())
                 .content(comment.getContent())
@@ -32,6 +33,8 @@ public final class CommentMapper {
                 .userId(comment.getUser().getId())
                 .userFirstName(comment.getUser().getFirstName())
                 .userLastName(comment.getUser().getLastName())
+                .likes(commentReactionService.getCommentLikes(comment.getId()))
+                .dislikes(commentReactionService.getCommentDislikes(comment.getId()))
                 .build();
     }
 }

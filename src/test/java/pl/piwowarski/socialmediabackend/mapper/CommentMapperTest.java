@@ -3,66 +3,75 @@ package pl.piwowarski.socialmediabackend.mapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.piwowarski.socialmediabackend.dto.comment.AddCommentDto;
 import pl.piwowarski.socialmediabackend.dto.comment.GetCommentDto;
-import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
-import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
+import pl.piwowarski.socialmediabackend.entity.Comment;
 import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.entity.User;
+import pl.piwowarski.socialmediabackend.service.commentReaction.CommentReactionService;
+import pl.piwowarski.socialmediabackend.service.post.PostService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CommentMapperTest {
 
     private final UserService userService = Mockito.mock(UserService.class);
+    private final PostService postService = Mockito.mock(PostService.class);
+    private final CommentReactionService commentReactionService = Mockito.mock(CommentReactionService.class);
     private final GetCommentDto getCommentDto = GetCommentDto.builder()
             .id(1L)
             .userId(1L)
             .postId(1L)
-            .userFirstName("user")
-            .userLastName("user")
+            .userFirstName(null)
+            .userLastName(null)
             .dateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0))
             .content("content")
             .build();
-    private final List<GetCommentDto> comments = List.of(getCommentDto);
-    private final AddPostDto addPostDto = AddPostDto.builder()
+    private final AddCommentDto addcommentDto = AddCommentDto.builder()
+            .postId(1L)
             .content("content")
             .userId(1L)
             .build();
-    private final GetPostDto getPostDto = GetPostDto.builder()
-            .userId(1L)
+    private final User user = User.builder()
             .id(1L)
-            .comments(comments)
+            .build();
+    private final Post post = Post.builder()
+            .id(1L)
+            .build();
+    private final Comment comment = Comment.builder()
             .content("content")
             .dateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0))
-            .userFirstName("user")
-            .userLastName("user")
+            .post(post)
+            .user(user)
             .build();
-    private final Post post1 = Post.builder()
+    private final Comment comment2 = Comment.builder()
             .id(1L)
             .content("content")
-            .user(User.builder().id(1L).firstName("user").lastName("user").build())
             .dateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0))
+            .post(post)
+            .user(user)
             .build();
-    private final Post post2 = Post.builder()
-            .content("content")
-            .dateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0))
-            .build();
+
 
     @Test
-    public void postMapperAddPostDtoToPostMapper() {
-        Mockito.when(userService.getEntity(1L)).thenReturn(null);
-        Post mappedPost = PostMapper.map(addPostDto, userService);
-        mappedPost.setDateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0));
+    public void commentMapperAddCommentDtoToCommentTest() {
+        Mockito.when(userService.getEntity(1L)).thenReturn(user);
+        Mockito.when(postService.getEntity(1L)).thenReturn(post);
 
-        Assertions.assertEquals(post2, mappedPost);
+        Comment mappedComment = CommentMapper.map(addcommentDto, userService, postService);
+        mappedComment.setDateTime(LocalDateTime.of(2024, 4, 22, 12, 0, 0));
+
+        Assertions.assertEquals(comment, mappedComment);
     }
 
     @Test
-    public void postMapperPostToGetPostDtoMapper() {
-        GetPostDto mappedGetPostDto = PostMapper.map(post1, comments);
+    public void commentMapperCommentToGetCommentDtoTest() {
+        Mockito.when(commentReactionService.getCommentDislikes(1L)).thenReturn(0);
+        Mockito.when(commentReactionService.getCommentLikes(1L)).thenReturn(0);
 
-        Assertions.assertEquals(getPostDto, mappedGetPostDto);
+        GetCommentDto mappedGetCommentDto = CommentMapper.map(comment2, commentReactionService);
+
+        Assertions.assertEquals(getCommentDto, mappedGetCommentDto);
     }
 }

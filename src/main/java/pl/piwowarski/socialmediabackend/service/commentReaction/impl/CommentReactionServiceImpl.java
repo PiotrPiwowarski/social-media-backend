@@ -28,6 +28,8 @@ public class CommentReactionServiceImpl implements CommentReactionService {
                 .findByUserIdAndCommentId(addReactionDto.getUserId(), addReactionDto.getStructureId());
         if(optional.isEmpty()) {
             commentReactionRepository.save(CommentReactionMapper.map(addReactionDto, commentService, userService));
+        } else if(optional.get().getReactionType().equals(addReactionDto.getReactionType())) {
+            commentReactionRepository.delete(optional.get());
         } else {
             commentReactionRepository.delete(optional.get());
             commentReactionRepository.save(CommentReactionMapper.map(addReactionDto, commentService, userService));
@@ -35,18 +37,12 @@ public class CommentReactionServiceImpl implements CommentReactionService {
     }
 
     @Override
-    public GetReactionDto getCommentLikes(long id) {
-        int likes =  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.LIKE);
-        return GetReactionDto.builder()
-                .number(likes)
-                .build();
+    public int getCommentLikes(long id) {
+        return  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.LIKE);
     }
 
     @Override
-    public GetReactionDto getCommentDislikes(long id) {
-        int dislikes =  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.DISLIKE);
-        return GetReactionDto.builder()
-                .number(dislikes)
-                .build();
+    public int getCommentDislikes(long id) {
+        return  commentReactionRepository.countAllByCommentIdAndReactionType(id, ReactionType.DISLIKE);
     }
 }

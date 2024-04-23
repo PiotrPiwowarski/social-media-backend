@@ -6,6 +6,6 @@ import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 public interface CommentReactionService {
 
     void addCommentReaction(AddReactionDto addReactionDto);
-    GetReactionDto getCommentLikes(long id);
-    GetReactionDto getCommentDislikes(long id);
+    int getCommentLikes(long id);
+    int getCommentDislikes(long id);
 }

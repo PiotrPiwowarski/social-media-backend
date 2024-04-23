@@ -9,8 +9,10 @@ import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.mapper.CommentMapper;
 import pl.piwowarski.socialmediabackend.mapper.PostMapper;
 import pl.piwowarski.socialmediabackend.service.comment.CommentService;
+import pl.piwowarski.socialmediabackend.service.commentReaction.CommentReactionService;
 import pl.piwowarski.socialmediabackend.service.followedUser.FollowedUserService;
 import pl.piwowarski.socialmediabackend.service.post.PostService;
+import pl.piwowarski.socialmediabackend.service.postReaction.PostReactionService;
 import pl.piwowarski.socialmediabackend.service.postsWithComments.PostsWithCommentsService;
 
 import java.util.List;
@@ -22,6 +24,8 @@ public class PostsWithCommentsServiceImpl implements PostsWithCommentsService {
     private final FollowedUserService followedUserService;
     private final PostService postService;
     private final CommentService commentService;
+    private final PostReactionService postReactionService;
+    private final CommentReactionService commentReactionService;
 
     @Override
     public List<GetPostDto> getAllPostsWithComments() {
@@ -35,9 +39,9 @@ public class PostsWithCommentsServiceImpl implements PostsWithCommentsService {
         List<GetCommentDto> getComments = commentService
                 .getPostComments(id)
                 .stream()
-                .map(CommentMapper::map)
+                .map(comment -> CommentMapper.map(comment, commentReactionService))
                 .toList();
-        return PostMapper.map(postService.getEntity(id), getComments);
+        return PostMapper.map(postService.getEntity(id), postReactionService, getComments);
     }
 
     @Override

@@ -7,6 +7,7 @@ import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
 import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
 import pl.piwowarski.socialmediabackend.entity.Post;
 import pl.piwowarski.socialmediabackend.entity.User;
+import pl.piwowarski.socialmediabackend.service.postReaction.PostReactionService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class PostMapperTest {
 
     private final UserService userService = Mockito.mock(UserService.class);
+    private final PostReactionService postReactionService = Mockito.mock(PostReactionService.class);
     private final AddPostDto addPostDto = AddPostDto.builder()
             .userId(1L)
             .content("content")
@@ -56,7 +58,7 @@ public class PostMapperTest {
 
     @Test
     public void postMapperPostToGetPostDtoTest() {
-        GetPostDto mappedGetPostDto = PostMapper.map(post2, null);
+        GetPostDto mappedGetPostDto = PostMapper.map(post2, postReactionService, null);
 
         Assertions.assertEquals(getPostDto, mappedGetPostDto);
     }

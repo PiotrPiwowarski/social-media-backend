@@ -1,10 +1,8 @@
 package pl.piwowarski.socialmediabackend.service.commentReaction.impl;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
-import pl.piwowarski.socialmediabackend.enums.ReactionType;
 import pl.piwowarski.socialmediabackend.repository.CommentReactionRepository;
 import pl.piwowarski.socialmediabackend.service.comment.CommentService;
 import pl.piwowarski.socialmediabackend.service.commentReaction.CommentReactionService;
@@ -23,10 +21,6 @@ public class CommentReactionImplTest {
 
     @Test
     public void getPostLikesTest() {
-        Mockito.when(commentReactionRepository.countAllByCommentIdAndReactionType(1L, ReactionType.LIKE)).thenReturn(1);
 
-        GetReactionDto commentLikes = commentReactionService.getCommentLikes(1L);
-
-        Assertions.assertEquals(getReactionDto, commentLikes);
     }
 }

@@ -5,6 +5,7 @@ import pl.piwowarski.socialmediabackend.dto.post.AddPostDto;
 import pl.piwowarski.socialmediabackend.dto.comment.GetCommentDto;
 import pl.piwowarski.socialmediabackend.dto.post.GetPostDto;
 import pl.piwowarski.socialmediabackend.entity.Post;
+import pl.piwowarski.socialmediabackend.service.postReaction.PostReactionService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ public final class PostMapper {
                 .build();
     }
 
-    public static GetPostDto map(Post post, List<GetCommentDto> getCommentsDto) {
+    public static GetPostDto map(Post post, PostReactionService postReactionService, List<GetCommentDto> getCommentsDto) {
         return GetPostDto.builder()
                 .id(post.getId())
                 .content(post.getContent())
@@ -31,6 +32,8 @@ public final class PostMapper {
                 .userFirstName(post.getUser().getFirstName())
                 .userLastName(post.getUser().getLastName())
                 .userId(post.getUser().getId())
+                .likes(postReactionService.getPostLikes(post.getId()))
+                .dislikes(postReactionService.getPostDislikes(post.getId()))
                 .comments(getCommentsDto)
                 .build();
     }

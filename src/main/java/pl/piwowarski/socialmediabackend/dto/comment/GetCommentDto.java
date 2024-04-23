@@ -20,4 +20,6 @@ public class GetCommentDto {
     private long userId;
     private String userFirstName;
     private String userLastName;
+    private int likes;
+    private int dislikes;
 }
