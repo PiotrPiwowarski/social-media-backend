@@ -39,13 +39,9 @@ There are two .sql files in `src/main/resources`:
 * Adding new comment
 * Deleting comment
 * Adding post reaction
-* Getting post likes
-* Getting post dislikes
 * Adding comment reaction
-* Getting comment likes
-* Getting comment dislikes
-* Getting all posts with comments
-* Getting followed users posts with comments
+* Getting all posts with reactions and comments with reactions
+* Getting followed users posts with reactions and comments with reactions
 
 
 ## Running the application
