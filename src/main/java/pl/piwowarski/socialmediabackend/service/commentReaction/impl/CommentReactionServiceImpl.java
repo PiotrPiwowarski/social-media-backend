@@ -30,6 +30,7 @@ public class CommentReactionServiceImpl implements CommentReactionService {
             commentReactionRepository.save(CommentReactionMapper.map(addReactionDto, commentService, userService));
         } else {
             commentReactionRepository.delete(optional.get());
+            commentReactionRepository.save(CommentReactionMapper.map(addReactionDto, commentService, userService));
         }
     }
 

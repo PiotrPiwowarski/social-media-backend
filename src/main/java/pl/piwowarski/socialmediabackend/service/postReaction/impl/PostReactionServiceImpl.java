@@ -32,6 +32,7 @@ public class PostReactionServiceImpl implements PostReactionService {
             postReactionRepository.save(PostReactionMapper.map(addReactionDto, postService, userService));
         } else {
             postReactionRepository.delete(optional.get());
+            postReactionRepository.save(PostReactionMapper.map(addReactionDto, postService, userService));
         }
     }
 
