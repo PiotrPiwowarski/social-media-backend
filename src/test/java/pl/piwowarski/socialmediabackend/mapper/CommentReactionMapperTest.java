@@ -26,7 +26,7 @@ public class CommentReactionMapperTest {
 
 
     @Test
-    public void CommentReactionMapperAddReactionDtoToCommentReactionTest() {
+    public void commentReactionMapperAddReactionDtoToCommentReactionTest() {
         Mockito.when(commentService.getEntity(1L)).thenReturn(null);
         Mockito.when(userService.getEntity(1L)).thenReturn(null);
 

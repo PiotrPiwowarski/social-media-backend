@@ -1,11 +1,8 @@
 package pl.piwowarski.socialmediabackend.security.service.login.impl;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.user.LoginResponse;
 import pl.piwowarski.socialmediabackend.dto.user.LoginUserDto;

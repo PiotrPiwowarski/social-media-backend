@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import pl.piwowarski.socialmediabackend.security.filter.JwtAuthenticationFilter;
-import pl.piwowarski.socialmediabackend.security.service.login.LoginService;
 
 @Configuration
 @EnableWebSecurity

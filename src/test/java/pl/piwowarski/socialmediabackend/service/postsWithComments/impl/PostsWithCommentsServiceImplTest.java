@@ -9,5 +9,18 @@ public class PostsWithCommentsServiceImplTest {
 
     }
 
+    @Test
+    public void getPostDtoTest() {
 
+    }
+
+    @Test
+    public void getFollowedUsersPostsWithCommentsTest() {
+
+    }
+
+    @Test
+    public void filterFollowedUsersPostsTest() {
+
+    }
 }

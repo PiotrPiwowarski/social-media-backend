@@ -37,4 +37,19 @@ public class FollowedUserImplTest {
              Assertions.assertEquals(1L, followedUserService.addUserToFollowers(addFollowedUserDto1));
          }
     }
+
+    @Test
+    public void getFollowedUsersTest() {
+
+    }
+
+    @Test
+    public void getFollowedUserDtoTest() {
+
+    }
+
+    @Test
+    public void deleteUserFromFollowersTest() {
+
+    }
 }

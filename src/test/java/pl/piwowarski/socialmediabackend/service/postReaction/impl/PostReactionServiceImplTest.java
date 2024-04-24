@@ -8,7 +8,7 @@ import pl.piwowarski.socialmediabackend.service.post.PostService;
 import pl.piwowarski.socialmediabackend.service.postReaction.PostReactionService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
-public class PostReactionImplTest {
+public class PostReactionServiceImplTest {
 
     private final PostReactionRepository postReactionRepository = Mockito.mock(PostReactionRepository.class);
     private final PostService postService = Mockito.mock(PostService.class);
@@ -20,7 +20,17 @@ public class PostReactionImplTest {
             .build();
 
     @Test
+    public void addPostReactionTest() {
+
+    }
+
+    @Test
     public void getPostLikesTest() {
+
+    }
+
+    @Test
+    public void getPostDislikesTest() {
 
     }
 }

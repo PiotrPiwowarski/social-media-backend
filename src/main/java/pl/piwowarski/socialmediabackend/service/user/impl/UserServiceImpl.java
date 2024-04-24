@@ -1,27 +1,15 @@
 package pl.piwowarski.socialmediabackend.service.user.impl;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
-import pl.piwowarski.socialmediabackend.dto.user.LoginResponse;
-import pl.piwowarski.socialmediabackend.dto.user.LoginUserDto;
-import pl.piwowarski.socialmediabackend.entity.AuthenticationToken;
 import pl.piwowarski.socialmediabackend.entity.User;
-import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchEmail;
 import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchIdException;
 import pl.piwowarski.socialmediabackend.exception.UserAlreadyExistsException;
 import pl.piwowarski.socialmediabackend.mapper.UserMapper;
-import pl.piwowarski.socialmediabackend.repository.AuthenticationTokenRepository;
 import pl.piwowarski.socialmediabackend.repository.UserRepository;
-import pl.piwowarski.socialmediabackend.security.service.jwt.JwtService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.util.List;

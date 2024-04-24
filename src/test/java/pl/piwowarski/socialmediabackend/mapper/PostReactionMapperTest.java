@@ -34,7 +34,7 @@ public class PostReactionMapperTest {
             .build();
 
     @Test
-    public void postReactionMapperAddReactionDtoToPostReaction() {
+    public void postReactionMapperAddReactionDtoToPostReactionTest() {
         Mockito.when(postService.getEntity(1L)).thenReturn(post);
         Mockito.when(userService.getEntity(1L)).thenReturn(user);
 

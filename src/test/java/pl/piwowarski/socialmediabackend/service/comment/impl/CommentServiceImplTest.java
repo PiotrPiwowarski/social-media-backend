@@ -40,4 +40,19 @@ public class CommentServiceImplTest {
             Assertions.assertEquals(1L, commentService.addComment(addCommentDto1));
         }
     }
+
+    @Test
+    public void getEntityTest() {
+
+    }
+
+    @Test
+    public void getPostCommentsTest() {
+
+    }
+
+    @Test
+    public void deleteCommentTest() {
+
+    }
 }

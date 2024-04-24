@@ -37,4 +37,19 @@ public class PostServiceImplTest {
             Assertions.assertEquals(post2.getId(), postService.addPost(addPostDto1));
         }
     }
+
+    @Test
+    public void getEntityTest() {
+
+    }
+
+    @Test
+    public void getAllPostsTest() {
+
+    }
+
+    @Test
+    public void deletePostTest() {
+
+    }
 }

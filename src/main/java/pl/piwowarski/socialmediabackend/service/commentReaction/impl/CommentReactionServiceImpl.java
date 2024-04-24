@@ -3,7 +3,6 @@ package pl.piwowarski.socialmediabackend.service.commentReaction.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.reaction.AddReactionDto;
-import pl.piwowarski.socialmediabackend.dto.reaction.GetReactionDto;
 import pl.piwowarski.socialmediabackend.entity.CommentReaction;
 import pl.piwowarski.socialmediabackend.enums.ReactionType;
 import pl.piwowarski.socialmediabackend.mapper.CommentReactionMapper;

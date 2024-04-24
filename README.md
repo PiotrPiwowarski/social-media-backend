@@ -14,6 +14,7 @@ This Rest API is created using following technologies:
 * Java 17
 * Spring Boot
 * Spring Data
+* Spring Security
 * H2 database
 * Lombok
 * JUnit
@@ -29,6 +30,7 @@ There are two .sql files in `src/main/resources`:
 * `data.sql` - it fills the database with data
 
 ## Some functionalities
+* Authentication
 * Adding new user
 * Getting user by id
 * Getting all users

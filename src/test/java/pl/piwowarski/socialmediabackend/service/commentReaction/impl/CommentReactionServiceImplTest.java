@@ -8,7 +8,7 @@ import pl.piwowarski.socialmediabackend.service.comment.CommentService;
 import pl.piwowarski.socialmediabackend.service.commentReaction.CommentReactionService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
-public class CommentReactionImplTest {
+public class CommentReactionServiceImplTest {
 
     private final CommentReactionRepository commentReactionRepository = Mockito.mock(CommentReactionRepository.class);
     private final CommentService commentService = Mockito.mock(CommentService.class);
@@ -20,7 +20,17 @@ public class CommentReactionImplTest {
             .build();
 
     @Test
-    public void getPostLikesTest() {
+    public void addCommentReactionTest() {
+
+    }
+
+    @Test
+    public void getCommentLikesTest() {
+
+    }
+
+    @Test
+    public void getCommentDislikesTest() {
 
     }
 }

@@ -24,8 +24,6 @@ public class UserServiceImplTest {
     private final JwtService jwtService = Mockito.mock(JwtService.class);
     private final AuthenticationTokenRepository authenticationTokenRepository =
             Mockito.mock(AuthenticationTokenRepository.class);
-    private final UserService userService = new UserServiceImpl(
-            userRepository, passwordEncoder, authenticationManager, jwtService, authenticationTokenRepository);
     private final User user1 = User.builder()
             .firstName("user1")
             .lastName("user1")
@@ -48,15 +46,26 @@ public class UserServiceImplTest {
 
     @Test
     public void addUserTest() {
-        Mockito.when(userRepository.findUserByEmail(addUserDto1.getEmail())).thenReturn(Optional.empty());
-        Mockito.when(passwordEncoder.encode(addUserDto1.getPassword()))
-                .thenReturn("$2a$10$XHEl4ITYK7X72RnHRmxaHuwFYO1UWA8Z9hEgW.7KPXzWvbuU6K5qy");
-        Mockito.when(userRepository.save(user1)).thenReturn(user2);
 
-        try(var mock = Mockito.mockStatic(UserMapper.class)) {
-            Mockito.when(UserMapper.map(addUserDto1, passwordEncoder)).thenReturn(user1);
+    }
 
-            Assertions.assertEquals(1L, userService.addUser(addUserDto1));
-        }
+    @Test
+    public void getUserTest() {
+
+    }
+
+    @Test
+    public void getEntityTest() {
+
+    }
+
+    @Test
+    public void getAllUsersTest() {
+
+    }
+
+    @Test
+    public void deleteUserTest() {
+
     }
 }

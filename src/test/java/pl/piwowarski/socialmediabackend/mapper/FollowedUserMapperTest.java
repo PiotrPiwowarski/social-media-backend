@@ -49,7 +49,7 @@ public class FollowedUserMapperTest {
             .build();
 
     @Test
-    public void FollowedUserMapperAddFollowedUserDtoToFollowedUserTest() {
+    public void followedUserMapperAddFollowedUserDtoToFollowedUserTest() {
         Mockito.when(userService.getEntity(1L)).thenReturn(user1);
         Mockito.when(userService.getEntity(2L)).thenReturn(user2);
 
@@ -59,7 +59,7 @@ public class FollowedUserMapperTest {
     }
 
     @Test
-    public void FollowedUserMapperGetUserDtoToGetFollowedUserDto() {
+    public void followedUserMapperGetUserDtoToGetFollowedUserDto() {
         GetFollowedUserDto mappedGetFollowedUserDto = FollowedUserMapper.map(1L, getUserDto);
 
         Assertions.assertEquals(getFollowedUserDto, mappedGetFollowedUserDto);

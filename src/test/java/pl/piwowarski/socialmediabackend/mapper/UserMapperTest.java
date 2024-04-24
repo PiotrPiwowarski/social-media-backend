@@ -38,14 +38,14 @@ public class UserMapperTest {
             .build();
 
     @Test
-    public void userMapperAddUserDtoToUserMapper() {
+    public void userMapperAddUserDtoToUserMapperTest() {
         Mockito.when(passwordEncoder.encode("user")).thenReturn("****");
         User mapppeUser = UserMapper.map(addUserDto, passwordEncoder);
         Assertions.assertEquals(user1, mapppeUser);
     }
 
     @Test
-    public void userMapperUserToGetUserDtoMapper() {
+    public void userMapperUserToGetUserDtoMapperTest() {
         GetUserDto mappedGetUserDto = UserMapper.map(user2);
         Assertions.assertEquals(getUserDto, mappedGetUserDto);
     }

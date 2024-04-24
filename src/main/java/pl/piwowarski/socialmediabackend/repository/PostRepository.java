@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.piwowarski.socialmediabackend.entity.Post;
 
-
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
