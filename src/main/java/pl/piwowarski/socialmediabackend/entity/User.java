@@ -36,6 +36,8 @@ public class User implements UserDetails {
     private List<CommentReaction> commentReactions;
     @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<PostReaction> postReactions;
+    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.REMOVE)
+    private List<AuthenticationToken> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

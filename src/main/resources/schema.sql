@@ -40,3 +40,9 @@ CREATE TABLE IF NOT EXISTS post_reactions (
     user_id bigint references users(id) on delete cascade,
     reaction_type ENUM('LIKE', 'DISLIKE')
 );
+
+CREATE TABLE IF NOT EXISTS authentication_token (
+    id bigint auto_increment primary key,
+    token varchar(512) not null,
+    user_id bigint references users(id) on delete cascade
+);

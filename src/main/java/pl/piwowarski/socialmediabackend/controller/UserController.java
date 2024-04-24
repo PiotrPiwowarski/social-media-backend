@@ -21,7 +21,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final JwtService jwtService;
 
     @PostMapping
 	public ResponseEntity<Void> addUser(@RequestBody AddUserDto addUserDto) {
@@ -50,14 +49,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authentication(@RequestBody LoginUserDto loginUserDto) {
-        User authenticatedUser = userService.authenticate(loginUserDto);
-
-        String jwtToken = jwtService.generateToken(authenticatedUser);
-
-        LoginResponse loginResponse = LoginResponse.builder()
-                .token(jwtToken)
-                .expiresIn(jwtService.getExpirationTime())
-                .build();
+        LoginResponse loginResponse = userService.authenticate(loginUserDto);
 
         return ResponseEntity.ok(loginResponse);
     }

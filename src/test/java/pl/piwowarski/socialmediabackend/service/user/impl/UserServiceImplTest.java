@@ -9,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.entity.User;
 import pl.piwowarski.socialmediabackend.mapper.UserMapper;
+import pl.piwowarski.socialmediabackend.repository.AuthenticationTokenRepository;
 import pl.piwowarski.socialmediabackend.repository.UserRepository;
+import pl.piwowarski.socialmediabackend.security.service.jwt.JwtService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.util.Optional;
@@ -19,7 +21,11 @@ public class UserServiceImplTest {
     private final UserRepository userRepository = Mockito.mock(UserRepository.class);
     private final PasswordEncoder passwordEncoder = Mockito.mock(BCryptPasswordEncoder.class);
     private final AuthenticationManager authenticationManager = Mockito.mock(AuthenticationManager.class);
-    private final UserService userService = new UserServiceImpl(userRepository, passwordEncoder, authenticationManager);
+    private final JwtService jwtService = Mockito.mock(JwtService.class);
+    private final AuthenticationTokenRepository authenticationTokenRepository =
+            Mockito.mock(AuthenticationTokenRepository.class);
+    private final UserService userService = new UserServiceImpl(
+            userRepository, passwordEncoder, authenticationManager, jwtService, authenticationTokenRepository);
     private final User user1 = User.builder()
             .firstName("user1")
             .lastName("user1")
