@@ -7,7 +7,7 @@ give likes and dislikes to posts and comments.
 
 This project is constantly being developed, new features soon!
 
-Now it's time to implement authentication using Spring Security. 
+Now it's time to test application. 
 
 ## Technologies
 This Rest API is created using following technologies:

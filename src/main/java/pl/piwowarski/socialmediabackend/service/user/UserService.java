@@ -1,6 +1,6 @@
 package pl.piwowarski.socialmediabackend.service.user;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.LoginResponse;
@@ -16,5 +16,4 @@ public interface UserService {
     User getEntity(long id);
     List<GetUserDto> getAllUsers();
     void deleteUser(long id);
-    LoginResponse authenticate(LoginUserDto input);
 }

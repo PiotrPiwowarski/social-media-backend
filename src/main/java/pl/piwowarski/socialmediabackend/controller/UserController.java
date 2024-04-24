@@ -5,10 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
-import pl.piwowarski.socialmediabackend.dto.user.LoginResponse;
-import pl.piwowarski.socialmediabackend.dto.user.LoginUserDto;
-import pl.piwowarski.socialmediabackend.entity.User;
-import pl.piwowarski.socialmediabackend.security.service.jwt.JwtService;
 import pl.piwowarski.socialmediabackend.service.user.UserService;
 
 import java.net.URI;
@@ -45,12 +41,5 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authentication(@RequestBody LoginUserDto loginUserDto) {
-        LoginResponse loginResponse = userService.authenticate(loginUserDto);
-
-        return ResponseEntity.ok(loginResponse);
     }
 }

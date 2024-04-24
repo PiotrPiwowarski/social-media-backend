@@ -1,9 +1,13 @@
 package pl.piwowarski.socialmediabackend.service.user.impl;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
@@ -29,9 +33,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
-    private final AuthenticationTokenRepository authenticationTokenRepository;
 
     @Override
     public long addUser(AddUserDto addUserDto) {
@@ -66,26 +67,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(long id) {
         userRepository.deleteById(id);
-    }
-
-    @Override
-    public LoginResponse authenticate(LoginUserDto input) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        input.getEmail(),
-                        input.getPassword()
-                )
-        );
-
-        User user =  userRepository.findUserByEmail(input.getEmail())
-                .orElseThrow(() -> new NoUsersWithSuchEmail("Brak użytkowników o podanym emailu"));
-
-        String jwtToken = jwtService.generateToken(user);
-        authenticationTokenRepository.save(AuthenticationToken.builder().token(jwtToken).user(user).build());
-
-        return LoginResponse.builder()
-                .token(jwtToken)
-                .expiresIn(jwtService.getExpirationTime())
-                .build();
     }
 }
