@@ -3,6 +3,7 @@ package pl.piwowarski.socialmediabackend.service.user.impl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
@@ -17,7 +18,8 @@ public class UserServiceImplTest {
 
     private final UserRepository userRepository = Mockito.mock(UserRepository.class);
     private final PasswordEncoder passwordEncoder = Mockito.mock(BCryptPasswordEncoder.class);
-    private final UserService userService = new UserServiceImpl(userRepository, passwordEncoder);
+    private final AuthenticationManager authenticationManager = Mockito.mock(AuthenticationManager.class);
+    private final UserService userService = new UserServiceImpl(userRepository, passwordEncoder, authenticationManager);
     private final User user1 = User.builder()
             .firstName("user1")
             .lastName("user1")

@@ -1,12 +1,15 @@
 package pl.piwowarski.socialmediabackend.service.user.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.piwowarski.socialmediabackend.dto.user.AddUserDto;
 import pl.piwowarski.socialmediabackend.dto.user.GetUserDto;
+import pl.piwowarski.socialmediabackend.dto.user.LoginUserDto;
 import pl.piwowarski.socialmediabackend.entity.User;
+import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchEmail;
 import pl.piwowarski.socialmediabackend.exception.NoUsersWithSuchIdException;
 import pl.piwowarski.socialmediabackend.exception.UserAlreadyExistsException;
 import pl.piwowarski.socialmediabackend.mapper.UserMapper;
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public long addUser(AddUserDto addUserDto) {
@@ -53,9 +57,21 @@ public class UserServiceImpl implements UserService {
                 .toList();
     }
 
-
     @Override
     public void deleteUser(long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User authenticate(LoginUserDto input) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        input.getEmail(),
+                        input.getPassword()
+                )
+        );
+
+        return userRepository.findUserByEmail(input.getEmail())
+                .orElseThrow(() -> new NoUsersWithSuchEmail("Brak użytkowników o podanym emailu"));
     }
 }
